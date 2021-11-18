@@ -39,6 +39,7 @@ export class TaskService {
   async createTask(taskDetail: CreateTaskDto, user): Promise<Task> {
     const newTask: Task = await this.taskRepository.create({
       ...taskDetail,
+      createdAt: new Date(),
       author: user.id,
     });
     await this.taskRepository.save(newTask);
