@@ -19,6 +19,10 @@ export class AuthController {
   @Post('register')
   async register(@Body() body: RegisterDto) {
     const user = await this.authService.register(body);
+    // const cookie = await this.authService.createCookieWithToken(user);
+    // response.setHeader('Set-Cookie', cookie);
+    // user.password = undefined;
+    // return response.send(user);
     return { user };
   }
 
@@ -35,9 +39,9 @@ export class AuthController {
   async login(@Request() request, @Response() response) {
     const { user } = request;
     const cookie = await this.authService.createCookieWithToken(user);
-    response.setHeader('Set-Cookie', cookie);
+    // response.setHeader('Set-Cookie', cookie);
     user.password = undefined;
-    return response.send(user);
+    return response.send({ ...user, accessToken: cookie });
   }
 
   @UseGuards(JwtAuthGuard)

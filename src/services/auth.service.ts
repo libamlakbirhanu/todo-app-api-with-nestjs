@@ -66,6 +66,7 @@ export class AuthService {
   async createCookieWithToken(user: any) {
     const payload = { email: user.email, sub: user.id };
     const token = this.jwtService.sign(payload);
-    return `accessToken=${token}; HttpOnly; Path=/; Max-Age=3600s`;
+    // return `accessToken=${token}; HttpOnly; Path=/; Max-Age=3600s`;
+    return token;
   }
 }
