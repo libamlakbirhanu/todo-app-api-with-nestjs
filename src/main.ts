@@ -9,9 +9,15 @@ async function bootstrap() {
   app.use(cookieParser());
   app.enableCors({
     credentials: true,
-    allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept'],
-    origin: 'http://localhost:5000',
+    allowedHeaders: [
+      'Origin',
+      'X-Requested-With',
+      'Content-Type',
+      'Accept',
+      'Authorization',
+    ],
+    origin: 'http://localhost:3000',
   });
-  await app.listen(5001);
+  await app.listen(5000);
 }
 bootstrap();
