@@ -1,0 +1,27 @@
+{
+  "name": "Todo",
+  "description": "A simple api built with nestjs.",
+  "repository": "https://github.com/libamlakbirhanu/todo-app-api-with-nestjs",
+  "success_url": "/",
+  "scripts":{
+    "predeploy": "npm install && npm run build"
+  },
+  "env": {
+    "NODE_ENV": {
+      "description": "Environment [production/development]",
+      "value": "production"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "image": "heroku/nodejs",
+  "addons": ["heroku-postgresql"],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
